@@ -5,7 +5,7 @@ export const steamButton = html`
   <a href="#" class="steambutton">
     <span>Login With Steam</span>
     <div class="icon">
-      <i class="fa fa-steam-square"></i>
+      <ion-icon name="logo-steam" class="fa fa-steam-square"></ion-icon>
     </div>
   </a>
 `;
