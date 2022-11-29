@@ -1,9 +1,11 @@
-import { reactive, html } from "@arrow-js/core";
-import { header, hero } from "./components";
+import { html, ParentNode } from "@arrow-js/core";
+import { router } from "./router";
+import { navigationState } from "./state";
+import { header } from "./components";
 import "./style.css";
 
-const app = document.getElementById("app");
+const app = document.getElementById("app") as ParentNode;
 
-const template = html` <div>${header}${hero}</div>`;
+const template = html`${header}${() => router[navigationState.active]}`;
 
 template(app);

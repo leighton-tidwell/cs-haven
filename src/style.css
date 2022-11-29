@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-/* Remove default margin */
+/* Rremove default margin */
 body,
 h1,
 h2,
@@ -21,7 +21,7 @@ dd {
   margin: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+/* Rremove list styles on ul, ol elrements with a list role, which suggests default styling will be rremoved */
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
@@ -39,7 +39,7 @@ body {
   line-height: 1.5;
 }
 
-/* A elements that don't have a class get default styles */
+/* A elrements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
@@ -59,7 +59,7 @@ select {
   font: inherit;
 }
 
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+/* Rremove all animations, transitions and smooth scroll for people that prefer not to see threm */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
@@ -76,34 +76,82 @@ select {
 }
 
 :root {
-  background-image: linear-gradient(
-    to top,
-    hsl(195, 84%, 61%) 0%,
-    hsl(227, 56%, 64%) 100%
-  );
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
   font-family: "Roboto", sans-serif;
 
-  --font-size-h1: 2.5rem;
-  --font-size-h2: 2rem;
-  --font-size-h3: 1.5rem;
-  --font-size-h4: 1.25rem;
-  --font-size-h5: 1rem;
-  --font-size-h6: 0.875rem;
-  --font-size-default: 1rem;
+  --primary-color: hsl(211, 100%, 46%);
+  --secondary-color: hsl(211, 10%, 10%);
+  --tertiary-color: hsl(211, 25%, 5%);
+  --sub-hero-color: hsl(210, 23%, 5%);
 
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
+  --red: hsl(360, 95%, 23%);
+  --green: hsl(126, 95%, 23%);
+
+  --text-color: hsl(211, 100%, 90%);
+
+  --white: hsl(0, 0%, 100%);
+
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 2em;
+  --font-size-h3: 1.5em;
+  --font-size-span: 1em;
+  --font-size-compact: 0.75em;
+  --font-size-cta: 1.2em;
+
+  --font-weight-normal: 500;
   --font-weight-bold: 700;
 
-  --padding-default: 1rem;
-  --padding-small: 0.5rem;
-  --padding-large: 1.5rem;
+  --subtle-drop-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  --color-primary: hsl(0, 0%, 100%);
-  --color-secondary: hsl(195, 84%, 61%);
-  --color-tertiary: hsl(227, 56%, 64%);
+  --border-radius-default: 10px;
+  --border-radius-large: 20px;
+
+  --page-padding-top: 1rem;
+  --page-padding-bottom: 1rem;
+  --page-padding-left: 1rem;
+  --page-padding-right: 1rem;
+
+  --page-padding: var(--page-padding-top) var(--page-padding-right)
+    var(--page-padding-bottom) var(--page-padding-left);
+  --button-padding: 0.5rem 1rem;
+  --default-gap: 0.75rem;
+
+  --cta-width: 75vw;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --font-size-h1: 3rem;
+    --font-size-h2: 2.5rem;
+    --font-size-h3: 2em;
+    --font-size-cta: 1.5em;
+
+    --page-padding-top: 2rem;
+    --page-padding-bottom: 2rem;
+    --page-padding-left: 5rem;
+    --page-padding-right: 5rem;
+
+    --button-padding: 0.75rem 1.5rem;
+    --default-gap: 1rem;
+
+    --cta-width: 50vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --font-size-h1: 4rem;
+    --font-size-h2: 3rem;
+    --font-size-h3: 2.5rem;
+    --font-size-cta: 1.75em;
+
+    --page-padding-top: 2rem;
+    --page-padding-bottom: 2rem;
+    --page-padding-left: 10rem;
+    --page-padding-right: 10rem;
+
+    --button-padding: 1rem 2rem;
+    --default-gap: 1.5rem;
+
+    --cta-width: 40vw;
+  }
 }

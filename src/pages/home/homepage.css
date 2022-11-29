@@ -1,0 +1,46 @@
+.home-page-container {
+  height: calc(100vh - 100px);
+  width: 100vw;
+
+  background-image: linear-gradient(
+      140deg,
+      hsla(212, 56%, 13%, 100%) 0%,
+      hsla(211, 100%, 24%, 100%) 45%,
+      hsla(211, 98%, 58%, 10%) 100%
+    ),
+    url("images/nuke.png");
+  background-size: auto;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+/* media query for rotated device */
+@media (max-height: 500px) {
+  .home-page-container {
+    height: 200vh;
+  }
+}
+
+@media (min-width: 768px) {
+  .home-page-container {
+    background-image: linear-gradient(
+        94deg,
+        hsla(212, 56%, 13%, 100%) 0%,
+        hsla(211, 100%, 24%, 100%) 60%,
+        hsla(211, 98%, 58%, 10%) 100%
+      ),
+      url("images/nuke.png");
+  }
+}
+
+@media (min-width: 1600px) {
+  .home-page-container {
+    background-image: linear-gradient(
+        94deg,
+        hsla(212, 56%, 13%, 100%) 0%,
+        hsla(211, 100%, 24%, 100%) 65%,
+        hsla(211, 98%, 58%, 10%) 100%
+      ),
+      url("images/nuke.png");
+  }
+}

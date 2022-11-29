@@ -1,0 +1,44 @@
+.subhero-background {
+  /* make subhero background animate in from the left */
+  animation: subhero-background 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  background-color: var(--sub-hero-color);
+  color: var(--text-color);
+  max-width: 75vw;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* keyframes for subhero-background to animate in from left of screen */
+@keyframes subhero-background {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: scale(1, 1) translateX(0);
+  }
+}
+
+/* add an angled corner to the bottom right of to subhero-background */
+.subhero-background::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 160px 50px;
+  border-color: transparent transparent var(--primary-color) transparent;
+}
+
+.subhero {
+  display: flex;
+  flex-direction: column;
+  padding: var(--page-padding);
+  width: var(--cta-width);
+}
+
+.subhero-text {
+  font-size: var(--font-size-span);
+}

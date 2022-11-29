@@ -1,3 +1,4 @@
+export { cta } from "./cta/cta";
 export { header } from "./header/header";
 export { hero } from "./hero/hero";
-export { steamButton } from "./steam-button/steam-button";
+export { subhero } from "./subhero/subhero";

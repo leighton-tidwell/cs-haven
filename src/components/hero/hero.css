@@ -1,0 +1,22 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  padding: var(--page-padding);
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.hero-text {
+  font-size: var(--font-size-h1);
+  text-shadow: var(--subtle-drop-shadow);
+}
+
+.normal {
+  font-weight: var(--font-weight-normal);
+  color: var(--text-color);
+}
+
+.bold {
+  font-weight: var(--font-weight-bold);
+  color: var(--white);
+}

@@ -1,12 +1,28 @@
 import { html } from "@arrow-js/core";
-import { steamButton } from "../steam-button/steam-button";
+import { navigateToPage } from "../../utils/navigateToPage";
 import "./header.css";
 
 export const header = html`
   <div class="header-container">
     <div class="logo">
-      <span>CS Haven</span>
+      <a @click="${() => navigateToPage("Home")}">
+        <img src="/images/cs-haven-logo.svg" alt="CS Haven Logo" />
+      </a>
     </div>
-    <div class="nav">${steamButton}</div>
+    <div class="login">
+      <button
+        @click="${() => navigateToPage("VIP")}"
+        class="sign-in-button"
+        type="button"
+      >
+        Sign in with Steam
+        <ion-icon
+          name="logo-steam"
+          class="fa
+        fa-steam-square"
+          size="large"
+        />
+      </button>
+    </div>
   </div>
 `;
