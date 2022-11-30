@@ -1,17 +1,17 @@
 import { html } from "@arrow-js/core";
-import { navigateToPage } from "../../utils/navigateToPage";
+import { router } from "../../router";
 import "./header.css";
 
 export const header = html`
   <div class="header-container">
     <div class="logo">
-      <a @click="${() => navigateToPage("Home")}">
+      <a @click="${() => (router.active = "HOME")}">
         <img src="/images/cs-haven-logo.svg" alt="CS Haven Logo" />
       </a>
     </div>
     <div class="login">
       <button
-        @click="${() => navigateToPage("VIP")}"
+        @click="${() => (router.active = "HOME")}"
         class="sign-in-button"
         type="button"
       >

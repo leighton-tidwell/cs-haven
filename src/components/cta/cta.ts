@@ -1,8 +1,10 @@
 import { html } from "@arrow-js/core";
+import { router } from "../../router";
 import "./cta.css";
 
 export const cta = html`<div class="cta">
-<button type="button" class="cta-button">
+<button @click="${() =>
+  (router.active = "VIP")}" type="button" class="cta-button">
 Become a VIP
 </button>
 <span class="cta-sub-text">
