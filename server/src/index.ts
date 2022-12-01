@@ -62,16 +62,13 @@ app.get("/fail", (req, res) => {
   res.send({ success: false });
 });
 
-app.get(
-  "/api/auth/verify",
-  passport.authenticate("steam", {
-    failureRedirect: "/fail",
-    successRedirect: "/success",
-  }),
-  (req, res) => {
+app.get("/api/auth/verify", (req, res) => {
+  if (req.isAuthenticated()) {
     res.send(req.user);
+  } else {
+    res.send({ success: false });
   }
-);
+});
 
 app.get(
   "/api/auth/steam",
