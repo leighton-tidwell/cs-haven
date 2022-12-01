@@ -40,7 +40,7 @@ passport.deserializeUser(function (user, done) {
 passport.use(
   new Strategy(
     {
-      returnURL: `${process.env.HOST}index.html#VIP?success=true`,
+      returnURL: "/api/auth/steam/return",
       realm: process.env.HOST,
       apiKey: process.env.LOCAL_STEAM_API_KEY,
     },
@@ -113,7 +113,7 @@ app.get(
   "/api/auth/steam/return",
   passport.authenticate("steam", { failureRedirect: "/fail" }),
   (req, res) => {
-    res.redirect("/");
+    res.redirect(`${process.env.HOST}index.html#VIP?success=true`);
   }
 );
 
