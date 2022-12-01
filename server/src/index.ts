@@ -5,6 +5,7 @@ import express from "express";
 import passport from "passport";
 import { Strategy } from "passport-steam";
 import session from "express-session";
+import cors from "cors";
 
 const app = express();
 const port = process.env.PORT;
@@ -34,6 +35,12 @@ passport.use(
       return done(null, profile);
     }
   )
+);
+
+app.use(
+  cors({
+    origin: "https://www.cs-haven.com",
+  })
 );
 
 app.use(
