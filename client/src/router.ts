@@ -35,7 +35,7 @@ class Router {
         history.replaceState(null, "", " ");
         break;
       default:
-        window.location.hash = this._active.toLowerCase();
+        window.location.hash = this._active.toUpperCase();
     }
   }
 
@@ -48,6 +48,7 @@ class Router {
   }
 
   getContent() {
+    console.log(this._active);
     return this._routes[this._active];
   }
 }
