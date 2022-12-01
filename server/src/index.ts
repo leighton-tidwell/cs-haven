@@ -54,17 +54,36 @@ app.get("/", (req, res) => {
   res.send(req.user);
 });
 
+app.get("/success", (req, res) => {
+  res.send({ success: true });
+});
+
+app.get("/fail", (req, res) => {
+  res.send({ success: false });
+});
+
+app.get(
+  "/api/auth/verify",
+  passport.authenticate("steam", {
+    failureRedirect: "/fail",
+    successRedirect: "/success",
+  }),
+  (req, res) => {
+    res.send(req.user);
+  }
+);
+
 app.get(
   "/api/auth/steam",
-  passport.authenticate("steam", { failureRedirect: "/" }),
+  passport.authenticate("steam", { failureRedirect: "/fail" }),
   (req, res) => {
-    res.redirect("/");
+    res.send({ success: true });
   }
 );
 
 app.get(
   "/api/auth/steam/return",
-  passport.authenticate("steam", { failureRedirect: "/" }),
+  passport.authenticate("steam", { failureRedirect: "/fail" }),
   (req, res) => {
     res.redirect("/");
   }
