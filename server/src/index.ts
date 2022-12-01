@@ -49,7 +49,8 @@ app.use(
     saveUninitialized: false,
     resave: false,
     cookie: {
-      domain: ".cs-haven.com",
+      secure: true,
+      domain: "cs-haven.com",
       maxAge: 3_600_000,
     },
   })
