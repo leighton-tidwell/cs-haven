@@ -4,8 +4,27 @@ dotenv.config();
 import express from "express";
 import passport from "passport";
 import { Strategy } from "passport-steam";
+import { Sequelize } from "sequelize";
+import sequalizeStore from "express-session-sequelize";
 import session from "express-session";
 import cors from "cors";
+
+const SessionStore = sequalizeStore(session.Store);
+
+const database = new Sequelize({
+  dialect: "mysql",
+  host: process.env.MYSQL_HOST,
+  username: process.env.MYSQL_USERNAME,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
+  port: parseInt(process.env.MYSQL_PORT),
+});
+
+database.sync();
+
+const sequalizeSessionStore = new SessionStore({
+  db: database,
+});
 
 const app = express();
 const port = process.env.PORT;
@@ -48,6 +67,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     saveUninitialized: false,
     resave: false,
+    store: sequalizeSessionStore,
     cookie: {
       secure: true,
       domain: "cs-haven.com",
