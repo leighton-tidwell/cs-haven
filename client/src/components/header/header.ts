@@ -2,6 +2,10 @@ import { html } from "@arrow-js/core";
 import { router } from "../../router";
 import "./header.css";
 
+const navigateToSite = (url: string) => {
+  window.location.href = url;
+};
+
 export const header = html`
   <div class="header-container">
     <div class="logo">
@@ -11,7 +15,8 @@ export const header = html`
     </div>
     <div class="login">
       <button
-        @click="${() => (router.active = "HOME")}"
+        @click="${() =>
+          navigateToSite("https://api.cs-haven.com/api/auth/steam")}"
         class="sign-in-button"
         type="button"
       >
