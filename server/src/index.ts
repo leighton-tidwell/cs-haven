@@ -7,7 +7,7 @@ import { Strategy } from "passport-steam";
 import session from "express-session";
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
 passport.serializeUser((user: any, done) => {
   done(null, user.id);
@@ -20,7 +20,7 @@ passport.deserializeUser(function (user, done) {
 passport.use(
   new Strategy(
     {
-      returnURL: `${process.env.HOST}api/auth/steam/return`,
+      returnURL: `${process.env.HOST}index.html#VIP?success=true`,
       realm: process.env.HOST,
       apiKey: process.env.LOCAL_STEAM_API_KEY,
     },
