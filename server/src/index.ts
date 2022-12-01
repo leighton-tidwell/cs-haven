@@ -63,6 +63,9 @@ app.get("/fail", (req, res) => {
 });
 
 app.get("/api/auth/verify", (req, res) => {
+  console.log("received request to verify auth");
+  console.log(req.user);
+  console.log(req.isAuthenticated());
   if (req.isAuthenticated()) {
     res.send(req.user);
   } else {
