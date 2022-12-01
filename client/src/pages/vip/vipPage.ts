@@ -4,7 +4,7 @@ import axios from "axios";
 let authData = null;
 
 const checkAuth = async () => {
-  const { data } = await axios.get("https://api.cs-haven.com/api/auth/steam");
+  const { data } = await axios.get("https://api.cs-haven.com/api/auth/verify");
   console.log(data);
   authData = reactive(data);
   return data;
