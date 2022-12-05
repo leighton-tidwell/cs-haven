@@ -40,8 +40,8 @@ passport.deserializeUser(function (user, done) {
 passport.use(
   new Strategy(
     {
-      returnURL: "/api/auth/steam/return",
-      realm: process.env.HOST,
+      returnURL: `${process.env.API_HOST}/api/auth/steam/return`,
+      realm: "https://api.cs-haven.com/",
       apiKey: process.env.LOCAL_STEAM_API_KEY,
     },
     (
@@ -58,7 +58,7 @@ passport.use(
 
 app.use(
   cors({
-    origin: "https://www.cs-haven.com",
+    origin: process.env.HOST,
   })
 );
 
@@ -69,7 +69,6 @@ app.use(
     resave: false,
     store: sequalizeSessionStore,
     cookie: {
-      secure: true,
       domain: "cs-haven.com",
       maxAge: 3_600_000,
     },
@@ -79,6 +78,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/", (req, res) => {
+  console.log(process.env.API_HOST);
   res.send(req.user);
 });
 
@@ -113,6 +113,8 @@ app.get(
   "/api/auth/steam/return",
   passport.authenticate("steam", { failureRedirect: "/fail" }),
   (req, res) => {
+    console.log("hit this point");
+    console.log(req.user);
     res.redirect(`${process.env.HOST}index.html#VIP?success=true`);
   }
 );

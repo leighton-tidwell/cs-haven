@@ -1,8 +1,7 @@
 {
   "name": "csgo-haven",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Monorepo entry point for CS Haven",
   "scripts": {
     "build-client": "cd client && vite build",
     "run-client": "cd client && vite"
