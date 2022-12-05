@@ -61,7 +61,7 @@ app.use(
     credentials: true,
     origin:
       process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
+        ? "http://localhost:5173"
         : "https://www.cs-haven.com",
   })
 );

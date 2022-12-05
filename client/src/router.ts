@@ -56,7 +56,7 @@ class Router {
 export const router = reactive(
   new Router(
     window.location.hash.slice(1) !== ""
-      ? (window.location.hash.slice(1) as Page)
+      ? (window.location.hash.slice(1).split("?")[0] as Page)
       : "HOME"
   )
 ) as unknown as Router; // small hack to get intellisense for methods
