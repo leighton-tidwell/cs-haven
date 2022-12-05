@@ -58,7 +58,10 @@ passport.use(
 
 app.use(
   cors({
-    origin: process.env.HOST,
+    origin:
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : "https://www.cs-haven.com",
   })
 );
 
