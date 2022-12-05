@@ -1,1 +1,3 @@
-# cs-haven
+# CS Haven
+
+Client for CS Haven
