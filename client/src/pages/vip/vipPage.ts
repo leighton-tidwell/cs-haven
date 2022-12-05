@@ -12,7 +12,7 @@ const checkAuth = async () =>
     })
     .then((response) => {
       console.log(response);
-      data.response = response.data;
+      data.auth = response.data;
     })
     .catch((e) => {
       console.log(e);
@@ -29,4 +29,5 @@ export const vipPage = html`<button
     @click="${async () => checkAuth()}"
   >
     Check Auth</button
-  >${() => (data.auth ? "LOGGED IN" : "NOT LOGGED IN")}`;
+  >${() =>
+    data.auth ? `LOGGED IN WITH STEAM: ${data.auth}` : "NOT LOGGED IN"}`;
