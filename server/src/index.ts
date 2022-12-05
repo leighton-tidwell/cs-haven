@@ -40,7 +40,7 @@ passport.deserializeUser(function (user, done) {
 passport.use(
   new Strategy(
     {
-      returnURL: `${process.env.API_HOST}/api/auth/steam/return`,
+      returnURL: `${process.env.API_HOST}api/auth/steam/return`,
       realm: "https://api.cs-haven.com/",
       apiKey: process.env.LOCAL_STEAM_API_KEY,
     },
