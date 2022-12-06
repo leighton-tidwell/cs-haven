@@ -133,7 +133,7 @@ select {
     --button-padding: 0.75rem 1.5rem;
     --default-gap: 1rem;
 
-    --cta-width: 50vw;
+    --cta-width: 70vw;
   }
 }
 
@@ -152,6 +152,24 @@ select {
     --button-padding: 1rem 2rem;
     --default-gap: 1.5rem;
 
-    --cta-width: 40vw;
+    --cta-width: 60vw;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --cta-width: 55vw;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --cta-width: 50vw;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --cta-width: 45vw;
   }
 }

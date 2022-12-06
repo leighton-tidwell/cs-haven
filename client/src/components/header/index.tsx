@@ -1,5 +1,6 @@
 import { h } from "preact";
-import { route, Link } from "preact-router";
+import { Link } from "preact-router";
+import { LogoSteam } from "react-ionicons";
 import style from "./style.css";
 
 const Header = () => (
@@ -13,11 +14,11 @@ const Header = () => (
       <button
         class={style["sign-in-button"]}
         onClick={() =>
-          (window.location.href = "https://api.cs-haven.com/api/auth/steam")
+          (window.location.href = `${process.env.PREACT_APP_API_ENDPOINT}/auth/steam`)
         }
         type="button"
       >
-        Sign in with Steam
+        Sign in with Steam <LogoSteam color="white" />
       </button>
     </div>
   </div>

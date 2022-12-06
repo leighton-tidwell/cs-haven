@@ -3,7 +3,7 @@
   animation: subhero-background 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   background-color: var(--sub-hero-color);
   color: var(--text-color);
-  max-width: 75vw;
+  max-width: var(--cta-width);
   position: relative;
   display: inline-block;
   overflow: hidden;

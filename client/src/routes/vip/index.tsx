@@ -8,7 +8,7 @@ const Vip = () => {
 
   const checkAuth = async () =>
     axios
-      .get("https://api.cs-haven.com/api/auth/verify", {
+      .get(`${process.env.PREACT_APP_API_ENDPOINT}/auth/verify`, {
         withCredentials: true,
       })
       .then((response) => {

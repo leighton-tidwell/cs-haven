@@ -1,11 +1,11 @@
 {
-  "name": "cs-haven",
-  "short_name": "cs-haven",
+  "name": "CS Haven",
+  "short_name": "CS Haven",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#fff",
-  "theme_color": "#673ab8",
+  "background_color": "hsl(211, 25%, 5%)",
+  "theme_color": "hsl(211, 100%, 46%)",
   "icons": [
     {
       "src": "/assets/icons/android-chrome-192x192.png",
