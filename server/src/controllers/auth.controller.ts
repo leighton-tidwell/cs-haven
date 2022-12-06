@@ -6,7 +6,7 @@ const verifyAuth = (req: Request, res: Response) => {
   if (req.isAuthenticated()) {
     res.send(req.user);
   } else {
-    res.send({ success: false });
+    res.status(404).send({ success: false });
   }
 };
 
