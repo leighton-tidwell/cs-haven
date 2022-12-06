@@ -1,34 +1,26 @@
 import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
-import axios from "axios";
+import { useTitle } from "../../hooks/useTitle";
+import { useCheckAuth } from "../../hooks/useCheckAuth";
 import style from "./style.css";
 
+import ContentLoader from "../../components/content-loader";
+
 const Vip = () => {
-  const [data, setData] = useState(null);
+  useTitle("VIP");
+  const { data, isLoading } = useCheckAuth();
 
-  const checkAuth = async () =>
-    axios
-      .get(`${process.env.PREACT_APP_API_ENDPOINT}/auth/verify`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  if (isLoading) return <ContentLoader />;
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
+  if (!data)
+    return (
+      <div className={style["home-page-container"]}>
+        <div>You are not authenticated</div>
+      </div>
+    );
 
   return (
     <div className={style["home-page-container"]}>
-      {data ? (
-        <div>You are authenticated with {JSON.stringify(data)}</div>
-      ) : (
-        <div>You are not authenticated</div>
-      )}
+      <div>You are authenticated with {JSON.stringify(data)}</div>
     </div>
   );
 };

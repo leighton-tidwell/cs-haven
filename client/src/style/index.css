@@ -116,6 +116,8 @@ select {
   --default-gap: 0.75rem;
 
   --cta-width: 75vw;
+
+  background-color: var(--tertiary-color);
 }
 
 @media (min-width: 768px) {

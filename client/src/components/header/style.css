@@ -2,7 +2,6 @@
   background-color: var(--tertiary-color);
   padding: 0 var(--page-padding-right);
   height: 100px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
