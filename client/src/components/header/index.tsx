@@ -2,10 +2,11 @@ import { h } from "preact";
 import { Link } from "preact-router";
 import { LogoSteam } from "react-ionicons";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
+import ContentLoader from "../content-loader";
 import style from "./style.css";
 
 const Header = () => {
-  const { data: isAuth, isLoading } = useCheckAuth();
+  const { data: userObject, isLoading } = useCheckAuth();
 
   if (isLoading) return <div>Loading...</div>; // TODO: loading states
 
@@ -17,8 +18,15 @@ const Header = () => {
         </Link>
       </div>
       <div class={style.login}>
-        {isAuth ? (
-          <div>signed in</div>
+        {isLoading ? (
+          <ContentLoader mobileOnly />
+        ) : userObject?.id ? (
+          <div class={style["logged-in"]}>
+            <div class={style["logged-in__avatar"]}>
+              <img src={userObject.avatar} alt={userObject.name} />
+            </div>
+            <div class={style["logged-in__username"]}>{userObject.name}</div>
+          </div>
         ) : (
           <button
             class={style["sign-in-button"]}

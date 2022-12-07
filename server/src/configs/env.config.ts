@@ -13,4 +13,5 @@ export const env = {
   CLIENT_ENDPOINT: process.env.CLIENT_ENDPOINT,
   PORT: process.env.PORT,
   NODE_ENV: process.env.NODE_ENV,
+  COOKIE_DOMAIN: process.env.COOKIE_DOMAIN,
 };

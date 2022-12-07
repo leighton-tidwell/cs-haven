@@ -8,7 +8,7 @@ export const session = expressSession({
   resave: false,
   store: sequalizeSessionStore,
   cookie: {
-    domain: "cs-haven.com",
+    domain: env.COOKIE_DOMAIN,
     maxAge: 3_600_000,
   },
 });

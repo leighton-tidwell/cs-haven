@@ -81,7 +81,9 @@ select {
   --primary-color: hsl(211, 100%, 46%);
   --secondary-color: hsl(211, 10%, 10%);
   --tertiary-color: hsl(211, 25%, 5%);
+  --quaternary-color: hsl(211, 95%, 23%);
   --sub-hero-color: hsl(210, 23%, 5%);
+  --sub-secondary-color: hsl(0, 0%, 18%);
 
   --red: hsl(360, 95%, 23%);
   --green: hsl(126, 95%, 23%);
@@ -116,6 +118,7 @@ select {
   --default-gap: 0.75rem;
 
   --cta-width: 75vw;
+  --vip-benefit-icon-size: 2.5rem;
 
   background-color: var(--tertiary-color);
 }
@@ -161,6 +164,7 @@ select {
 @media (min-width: 1280px) {
   :root {
     --cta-width: 55vw;
+    --vip-benefit-icon-size: 4rem;
   }
 }
 
