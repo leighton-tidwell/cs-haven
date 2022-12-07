@@ -63,7 +63,7 @@ passport.use(
     ) =>
       User.upsert({
         id: profile.id,
-        steamid: new SteamID(profile._json.steamid).getSteamID64(),
+        steamid: new SteamID(profile._json.steamid).getSteam2RenderedID(true),
         name: profile.displayName,
         profileurl: profile._json.profileurl,
         avatar: profile._json.avatar,
