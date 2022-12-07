@@ -2,8 +2,6 @@ import { h } from "preact";
 import { Route, Router } from "preact-router";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import { useCheckAuth } from "../hooks/useCheckAuth";
-
 // Components
 import Header from "./header";
 
