@@ -4,7 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 
 // Routes
-import { Root, NotFound, Vip, Home } from "./routes";
+import Root from "./routes/root";
+import Home from "./routes/home";
+import Vip from "./routes/vip";
+import NotFound from "./routes/error404";
 
 const router = createBrowserRouter([
   {
