@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosError, isAxiosError } from "axios";
 
 // type UserObject = {
@@ -18,20 +18,23 @@ import axios, { AxiosError, isAxiosError } from "axios";
 // Taking out typing until I understand this more.
 
 const checkAuth = async () => {
-  return axios
-    .get(`${process.env.PREACT_APP_API_ENDPOINT}/auth/verify`, {
-      withCredentials: true,
-    })
-    .then((res) => res.data)
-    .catch((error: Error | AxiosError) => {
-      if (isAxiosError(error)) {
-        if (error.response?.status === 404) {
-          return null;
-        }
-      } else {
-        throw error;
-      }
-    });
+  return;
 };
 
-export const useCheckAuth = () => useQuery("auth", checkAuth);
+export const useCheckAuth = () =>
+  useQuery(["auth"], () =>
+    axios
+      .get(`${import.meta.env.VITE_APP_API_ENDPOINT}/auth/verify`, {
+        withCredentials: true,
+      })
+      .then((res) => res.data)
+      .catch((error: Error | AxiosError) => {
+        if (isAxiosError(error)) {
+          if (error.response?.status === 404) {
+            return null;
+          }
+        } else {
+          throw error;
+        }
+      })
+  );

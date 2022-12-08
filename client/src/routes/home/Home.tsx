@@ -1,10 +1,7 @@
-import { h } from "preact";
 import { useTitle } from "../../hooks/useTitle";
-import style from "./style.css";
+import style from "./style.module.css";
 
-import Hero from "../../components/hero";
-import SubHero from "../../components/subhero";
-import CallToAction from "../../components/cta";
+import { Hero, Subhero, CallToAction } from "../../components";
 
 const Home = () => {
   useTitle("");
@@ -12,7 +9,7 @@ const Home = () => {
   return (
     <div className={style["home-page-container"]}>
       <Hero />
-      <SubHero />
+      <Subhero />
       <CallToAction />
     </div>
   );

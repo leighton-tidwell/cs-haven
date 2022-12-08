@@ -1,6 +1,5 @@
-import { h } from "preact";
-import { useState, useEffect } from "preact/hooks";
-import style from "./style.css";
+import { useState, useEffect } from "react";
+import style from "./style.module.css";
 
 type ContentLoaderProps = {
   mobileOnly?: boolean;

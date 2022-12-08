@@ -1,4 +1,3 @@
-import { h } from "preact";
 import { useTitle } from "../../hooks/useTitle";
 
 const NotFound = () => {

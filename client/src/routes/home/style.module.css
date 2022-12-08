@@ -8,7 +8,7 @@
       hsla(211, 100%, 24%, 100%) 45%,
       hsla(211, 98%, 58%, 10%) 100%
     ),
-    url("/assets/images/nuke.png");
+    url("/src/assets/images/nuke.png");
   background-size: auto;
   background-position: right top;
   background-repeat: no-repeat;
@@ -29,7 +29,7 @@
         hsla(211, 100%, 24%, 100%) 60%,
         hsla(211, 98%, 58%, 10%) 100%
       ),
-      url("/assets/images/nuke.png");
+      url("/src/assets/images/nuke.png");
   }
 }
 
@@ -41,6 +41,6 @@
         hsla(211, 100%, 24%, 100%) 65%,
         hsla(211, 98%, 58%, 10%) 100%
       ),
-      url("/assets/images/nuke.png");
+      url("/src/assets/images/nuke.png");
   }
 }

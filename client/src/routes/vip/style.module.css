@@ -23,7 +23,7 @@
 .top-pane {
   border-bottom: 50px solid var(--primary-color);
 
-  background-image: url("/assets/images/terrorist.png");
+  background-image: url("/src/assets/images/terrorist.png");
   background-size: cover;
   background-repeat: no-repeat;
 

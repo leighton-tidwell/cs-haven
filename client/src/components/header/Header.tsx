@@ -1,38 +1,44 @@
-import { h } from "preact";
-import { Link } from "preact-router";
 import { LogoSteam } from "react-ionicons";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
-import ContentLoader from "../content-loader";
-import style from "./style.css";
+import { ContentLoader } from "../";
+import { Link } from "react-router-dom";
+import logo from "../../assets/images/cs-haven-logo.svg";
+import style from "./style.module.css";
 
 const Header = () => {
   const { data: userObject, isLoading } = useCheckAuth();
 
   if (isLoading) return <div>Loading...</div>; // TODO: loading states
 
+  console.log(logo);
+
   return (
-    <div class={style["header-container"]}>
-      <div class={style.logo}>
-        <Link href="/">
-          <img src="/assets/images/cs-haven-logo.svg" alt="CS Haven Logo" />
+    <div className={style["header-container"]}>
+      <div className={style.logo}>
+        <Link to="/">
+          <img src={logo} alt="CS Haven Logo" />
         </Link>
       </div>
-      <div class={style.login}>
+      <div className={style.login}>
         {isLoading ? (
           <ContentLoader mobileOnly />
         ) : userObject?.id ? (
-          <div class={style["logged-in"]}>
-            <div class={style["logged-in__avatar"]}>
+          <div className={style["logged-in"]}>
+            <div className={style["logged-in__avatar"]}>
               <img src={userObject.avatar} alt={userObject.name} />
             </div>
-            <div class={style["logged-in__username"]}>{userObject.name}</div>
+            <div className={style["logged-in__username"]}>
+              {userObject.name}
+            </div>
           </div>
         ) : (
           <button
-            class={style["sign-in-button"]}
+            className={style["sign-in-button"]}
             onClick={() => {
               if (typeof window !== undefined) {
-                window.location.href = `${process.env.PREACT_APP_API_ENDPOINT}/auth/steam`;
+                window.location.href = `${
+                  import.meta.env.VITE_APP_API_ENDPOINT
+                }/auth/steam`;
               }
             }}
             type="button"
