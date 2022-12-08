@@ -2,7 +2,7 @@
   "name": "cs-haven-client",
   "version": "0.0.1",
   "scripts": {
-    "build": "preact build --no-prerender",
+    "build": "preact build --no-prerender --no-inline-css",
     "serve": "sirv build --cors --single",
     "dev": "preact watch",
     "lint": "eslint src",

@@ -30,9 +30,11 @@ const Header = () => {
         ) : (
           <button
             class={style["sign-in-button"]}
-            onClick={() =>
-              (window.location.href = `${process.env.PREACT_APP_API_ENDPOINT}/auth/steam`)
-            }
+            onClick={() => {
+              if (typeof window !== undefined) {
+                window.location.href = `${process.env.PREACT_APP_API_ENDPOINT}/auth/steam`;
+              }
+            }}
             type="button"
           >
             Sign in with Steam <LogoSteam color="white" />

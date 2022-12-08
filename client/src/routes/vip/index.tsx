@@ -69,7 +69,11 @@ const Vip = () => {
 
   return (
     <div class={style["vip-page-container"]}>
-      <div class={`${style["top-pane"]} ${isLoading ? style["hidden"] : null}`}>
+      <div
+        class={`${style["top-pane"]} ${
+          isLoading || data?.id ? style["hidden"] : ""
+        }`}
+      >
         <Fragment>
           <div class={style["intro-statement"]}>
             <div class={style["intro-statement__title"]}>
@@ -108,7 +112,7 @@ const Vip = () => {
       </div>
       <div
         class={`${style["bottom-pane"]} ${
-          isLoading ? style["flex-center"] : null
+          isLoading || !data?.id ? style["flex-center"] : ""
         }`}
       >
         {isLoading ? (
@@ -183,9 +187,11 @@ const Vip = () => {
               </div>
               <button
                 class={style["steam-callout__button"]}
-                onClick={() =>
-                  (window.location.href = `${process.env.PREACT_APP_API_ENDPOINT}/auth/steam`)
-                }
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.location.href = `${process.env.PREACT_APP_API_ENDPOINT}/auth/steam`;
+                  }
+                }}
                 type="button"
               >
                 Sign in with Steam <LogoSteam color="white" />
