@@ -14,4 +14,5 @@ export const env = {
   PORT: process.env.PORT,
   NODE_ENV: process.env.NODE_ENV,
   COOKIE_DOMAIN: process.env.COOKIE_DOMAIN,
+  STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
 };
