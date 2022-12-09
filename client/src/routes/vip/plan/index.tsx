@@ -18,7 +18,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 const Plan = () => {
   // get the parameters from react router
   const { planId } = useParams();
-  const { data: user } = useCheckAuth();
+  const { data: user }: { data: any } = useCheckAuth();
   const { data: clientSecret, isLoading } = usePaymentIntent(planId, user.id);
 
   const chosenPackage = packages.find((p) => p.id === planId);
@@ -36,6 +36,10 @@ const Plan = () => {
     rules: {
       ".AccordionItem": {
         backgroundColor: "#17191c",
+        borderColor: "#0a0d10",
+      },
+      ".AccordionItem--selected": {
+        color: "white",
       },
       ".Label": {
         color: "white",
@@ -48,11 +52,17 @@ const Plan = () => {
       ".Input:focus": {
         outline: "1px solid #0071eb",
       },
+      ".Input:disabled": {
+        backgroundColor: "#101419",
+      },
       ".Block": {
         backgroundColor: "#0a0d10",
       },
       ".BlockDivider": {
         backgroundColor: "#17191c",
+      },
+      ".Dropdown": {
+        backgroundColor: "#fff",
       },
     },
   };
@@ -108,7 +118,7 @@ const Plan = () => {
       </div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm user={user} />
+          <CheckoutForm />
         </Elements>
       )}
     </div>

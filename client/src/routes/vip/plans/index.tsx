@@ -11,6 +11,7 @@ export const packages = [
     description: "Purchases one month of VIP access to all CS Haven servers.",
     subtext: "DOES NOT RENEW",
     price: 6.99,
+    subscription: false,
   },
   {
     id: "monthly",
@@ -21,6 +22,7 @@ export const packages = [
     crossOutPrice: 6.99,
     price: 5.99,
     background: "primary",
+    subscription: true,
   },
   {
     id: "three-months",
@@ -29,6 +31,7 @@ export const packages = [
       "Purchases three months of VIP access to all CS Haven servers.",
     subtext: "DOES NOT RENEW",
     price: 17.99,
+    subscription: false,
   },
   {
     id: "quarterly",
@@ -37,6 +40,7 @@ export const packages = [
       "Auto renews quarterly, you can cancel ANY time with no penalty.",
     price: 15.99,
     background: "quaternary",
+    subscription: true,
   },
 ];
 

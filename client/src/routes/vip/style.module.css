@@ -131,9 +131,27 @@
   margin-bottom: var(--page-padding-bottom);
 }
 
+@media (min-height: 600px) and (orientation: landscape) {
+  .vip-benefits {
+    gap: var(--default-gap);
+  }
+}
+
 .vip-benefits__title {
   font-size: var(--font-size-cta);
   font-weight: var(--font-weight-normal);
+}
+
+@media (min-height: 600px) and (orientation: landscape) {
+  .vip-benefits__title {
+    font-size: var(--font-size-span);
+  }
+}
+
+@media (min-height: 800px) and (orientation: landscape) {
+  .vip-benefits__title {
+    font-size: var(--font-size-cta);
+  }
 }
 
 .vip-benefits__benefit {
@@ -159,9 +177,43 @@
   font-weight: var(--font-weight-bold);
 }
 
+@media (min-height: 600px) and (orientation: landscape) {
+  .vip-benefits__benefit__title {
+    font-size: var(--font-size-span);
+  }
+  .vip-benefits__benefit__description {
+    font-size: var(--font-size-compact);
+  }
+}
+
+@media (min-height: 800px) and (orientation: landscape) {
+  .vip-benefits__benefit__title {
+    font-size: calc(var(--font-size-span) + 0.5em);
+  }
+  .vip-benefits__benefit__description {
+    font-size: var(--font-size-span);
+  }
+}
+
+/* Make .bottom-pane have a rounded scroll bar */
+.bottom-pane::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.bottom-pane::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+}
+
+.bottom-pane::-webkit-scrollbar-track {
+  background-color: var(--tertiary-color);
+}
+
 .bottom-pane {
   flex: 1 1 0px;
   gap: var(--default-gap);
+  max-height: 100vh;
+  overflow: auto;
 }
 
 .flex-center {

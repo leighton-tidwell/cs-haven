@@ -10,8 +10,9 @@ const confirmPayment = async (
   return stripe.confirmPayment({
     elements,
     confirmParams: {
-      return_url: `${import.meta.env.VITE_CLIENT_ENDPOINT}/vip/success`,
+      return_url: `${import.meta.env.VITE_APP_CLIENT_ENDPOINT}/vip/success`,
     },
+    redirect: "if_required",
   });
 };
 
