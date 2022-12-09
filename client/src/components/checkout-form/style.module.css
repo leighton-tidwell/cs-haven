@@ -1,0 +1,28 @@
+form {
+  max-height: 45vh;
+  overflow: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--default-gap);
+  padding: var(--default-gap);
+  border-radius: var(--border-radius-default);
+  background-color: var(--secondary-color);
+}
+
+.payment-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--default-gap);
+  padding: var(--button-padding);
+  border-radius: var(--border-radius-default);
+  background-color: var(--primary-color);
+  cursor: pointer;
+  width: fit-content;
+  border: none;
+  color: var(--white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-span);
+  margin-left: var(--default-gap);
+}

@@ -77,13 +77,13 @@ select {
   font-family: "Roboto", sans-serif;
 
   --primary-color: hsl(211, 100%, 46%);
-  --secondary-color: hsl(211, 10%, 10%);
+  --secondary-color: hsl(216, 10%, 10%);
   --tertiary-color: hsl(211, 25%, 5%);
   --quaternary-color: hsl(211, 95%, 23%);
   --sub-hero-color: hsl(210, 23%, 5%);
   --sub-secondary-color: hsl(0, 0%, 18%);
 
-  --red: hsl(360, 95%, 23%);
+  --red: hsl(0, 95%, 23%);
   --green: hsl(126, 95%, 23%);
 
   --text-color: hsl(211, 100%, 90%);

@@ -41,17 +41,17 @@ export const packages = [
 ];
 
 const Plans = () => {
-  const { data, isLoading } = useCheckAuth();
+  const { data: user, isLoading } = useCheckAuth();
   const navigate = useNavigate();
 
   if (isLoading) return <ContentLoader />;
 
-  if (!data) return <Navigate to="/vip" />;
+  if (!user) return <Navigate to="/vip" />;
 
   return (
     <div className={style["logged-in"]}>
       <div className={style["logged-in__welcome"]}>
-        Welcome, <span className={style["bold"]}>{data.name}</span>
+        Welcome, <span className={style["bold"]}>{user.name}</span>
       </div>
       <div className={style["choose-package"]}>
         <div className={style["choose-package__title"]}>Choose a package:</div>

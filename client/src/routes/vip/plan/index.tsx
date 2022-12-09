@@ -9,9 +9,9 @@ import {
 } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { usePaymentIntent } from "../../../hooks/usePaymentIntent";
-import style from "./style.module.css";
 import { useCheckAuth } from "../../../hooks/useCheckAuth";
 import { ContentLoader, CheckoutForm } from "../../../components";
+import style from "./style.module.css";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -19,17 +19,53 @@ const Plan = () => {
   // get the parameters from react router
   const { planId } = useParams();
   const { data: user } = useCheckAuth();
-  const { data: clientSecret, isLoading } = usePaymentIntent(planId);
+  const { data: clientSecret, isLoading } = usePaymentIntent(planId, user.id);
 
   const chosenPackage = packages.find((p) => p.id === planId);
 
   const appearance: Appearance = {
-    theme: "stripe",
+    theme: "none",
+    labels: "floating",
+    variables: {
+      fontFamily: "Roboto, sans-serif",
+      borderRadius: "10px",
+      colorLogo: "light",
+      colorLogoBlock: "light",
+      colorIcon: "#0071eb",
+    },
+    rules: {
+      ".AccordionItem": {
+        backgroundColor: "#17191c",
+      },
+      ".Label": {
+        color: "white",
+        fontWeight: "700",
+      },
+      ".Input": {
+        backgroundColor: "#0a0d10",
+        borderRadius: "5px",
+      },
+      ".Input:focus": {
+        outline: "1px solid #0071eb",
+      },
+      ".Block": {
+        backgroundColor: "#0a0d10",
+      },
+      ".BlockDivider": {
+        backgroundColor: "#17191c",
+      },
+    },
   };
 
   const options: StripeElementsOptions = {
     clientSecret,
     appearance,
+    fonts: [
+      {
+        cssSrc:
+          "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap",
+      },
+    ],
   };
 
   if (!chosenPackage) return <Navigate to="/404" />;
@@ -72,7 +108,7 @@ const Plan = () => {
       </div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm user={user} />
         </Elements>
       )}
     </div>
