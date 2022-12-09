@@ -1,9 +1,11 @@
-import { CheckmarkDone, LogoSteam, HelpCircle } from "react-ionicons";
-import { useTitle } from "../../hooks/useTitle";
+import { CheckmarkDone } from "react-ionicons";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
 import { ContentLoader } from "../../components";
 import logo from "../../assets/images/cs-haven-logo.svg";
 import style from "./style.module.css";
+
+import Login from "./login";
 
 const benefits = [
   {
@@ -26,45 +28,9 @@ const benefits = [
   },
 ];
 
-const packages = [
-  {
-    id: "one-month",
-    title: "One Month",
-    description: "Purchases one month of VIP access to all CS Haven servers.",
-    subtext: "DOES NOT RENEW",
-    price: 6.99,
-  },
-  {
-    id: "monthly",
-    tag: "Popular",
-    title: "Monthly",
-    description:
-      "Auto renews monthly, you can cancel ANY time with no penalty.",
-    crossOutPrice: 6.99,
-    price: 5.99,
-    background: "primary",
-  },
-  {
-    id: "three-months",
-    title: "Three Months",
-    description:
-      "Purchases three months of VIP access to all CS Haven servers.",
-    subtext: "DOES NOT RENEW",
-    price: 17.99,
-  },
-  {
-    id: "quarterly",
-    title: "Quarterly",
-    description:
-      "Auto renews quarterly, you can cancel ANY time with no penalty.",
-    price: 15.99,
-    background: "quaternary",
-  },
-];
-
 const Vip = () => {
-  useTitle("VIP");
   const { data, isLoading } = useCheckAuth();
+  let location = useLocation();
 
   return (
     <div className={style["vip-page-container"]}>
@@ -116,111 +82,19 @@ const Vip = () => {
           isLoading || !data?.id ? style["flex-center"] : ""
         }`}
       >
+        {/* We will show the loader if loading
+         We will show the login page if the user is not logged in
+         Navigate the user to the plans page if they are logged in
+         * this will need to be expanded on to allow for expired VIPS
+      if none of those, we must be on a sub route.. show the content */}
         {isLoading ? (
           <ContentLoader />
-        ) : data?.id ? (
-          <div className={style["logged-in"]}>
-            <div className={style["logged-in__welcome"]}>
-              Welcome, <span className={style["bold"]}>{data.name}</span>
-            </div>
-            <div className={style["choose-package"]}>
-              <div className={style["choose-package__title"]}>
-                Choose a package:
-              </div>
-              <div className={style["choose-package__packages"]}>
-                {packages.map((packageItem) => (
-                  <div
-                    key={packageItem.id}
-                    className={`${style["choose-package__package"]} ${
-                      style[packageItem.background ?? "normal"]
-                    }`}
-                  >
-                    {packageItem.tag && (
-                      <div className={style["choose-package__package__tag"]}>
-                        {packageItem.tag}
-                      </div>
-                    )}
-                    <div className={style["choose-package__package__title"]}>
-                      {packageItem.title}
-                    </div>
-                    <div
-                      className={style["choose-package__package__description"]}
-                    >
-                      {packageItem.description}
-                    </div>
-                    {packageItem.subtext && (
-                      <div
-                        className={style["choose-package__package__subtext"]}
-                      >
-                        {packageItem.subtext}
-                      </div>
-                    )}
-                    <div className={style["choose-package__package__price"]}>
-                      {packageItem.crossOutPrice && (
-                        <div
-                          className={
-                            style["choose-package__package__cross-out-price"]
-                          }
-                        >
-                          ${packageItem.crossOutPrice}
-                        </div>
-                      )}
-                      <div
-                        className={
-                          style["choose-package__package__actual-price"]
-                        }
-                      >
-                        ${packageItem.price}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className={style["no-refund-callout"]}>
-              <div className={style["no-refund-callout__icon"]}>
-                <HelpCircle color="hsl(0, 0%, 18%)" />
-              </div>
-              <div className={style["no-refund-callout__text"]}>
-                All of our offerings are non refundable.
-              </div>
-            </div>
-          </div>
+        ) : !data?.id ? (
+          <Login />
+        ) : !location.pathname.includes("/vip/plans") ? (
+          <Navigate to="/vip/plans" />
         ) : (
-          <>
-            <div className={style["steam-callout"]}>
-              <div className={style["steam-callout__title"]}>
-                To start, please login with steam
-              </div>
-              <button
-                className={style["steam-callout__button"]}
-                onClick={() => {
-                  window.location.href = `${
-                    import.meta.env.VITE_APP_API_ENDPOINT
-                  }/auth/steam`;
-                }}
-                type="button"
-              >
-                Sign in with Steam <LogoSteam color="white" />
-              </button>
-            </div>
-            <div className={style["info-callout"]}>
-              <div className={style["info-callout__icon"]}>
-                <HelpCircle color="hsl(0, 0%, 18%)" />
-              </div>
-              <div className={style["info-callout__title"]}>
-                We can&apos;t see your login details, that all takes place on
-                Steams servers. You can read more about{" "}
-                <a
-                  href="https://partner.steamgames.com/doc/features/auth"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  OpenID here.
-                </a>
-              </div>
-            </div>
-          </>
+          <Outlet />
         )}
       </div>
     </div>

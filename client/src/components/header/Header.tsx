@@ -6,11 +6,7 @@ import logo from "../../assets/images/cs-haven-logo.svg";
 import style from "./style.module.css";
 
 const Header = () => {
-  const { data: userObject, isLoading } = useCheckAuth();
-
-  if (isLoading) return <div>Loading...</div>; // TODO: loading states
-
-  console.log(logo);
+  const { data: userObject } = useCheckAuth();
 
   return (
     <div className={style["header-container"]}>
@@ -20,9 +16,7 @@ const Header = () => {
         </Link>
       </div>
       <div className={style.login}>
-        {isLoading ? (
-          <ContentLoader mobileOnly />
-        ) : userObject?.id ? (
+        {userObject?.id ? (
           <div className={style["logged-in"]}>
             <div className={style["logged-in__avatar"]}>
               <img src={userObject.avatar} alt={userObject.name} />

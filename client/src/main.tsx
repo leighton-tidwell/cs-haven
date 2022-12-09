@@ -7,6 +7,8 @@ import "./index.css";
 import Root from "./routes/root";
 import Home from "./routes/home";
 import Vip from "./routes/vip";
+import Plans from "./routes/vip/plans";
+import Plan from "./routes/vip/plan";
 import NotFound from "./routes/error404";
 
 const router = createBrowserRouter([
@@ -22,6 +24,16 @@ const router = createBrowserRouter([
       {
         path: "/vip",
         element: <Vip />,
+        children: [
+          {
+            path: "/vip/plans",
+            element: <Plans />,
+          },
+          {
+            path: "/vip/plans/:planId",
+            element: <Plan />,
+          },
+        ],
       },
     ],
   },
