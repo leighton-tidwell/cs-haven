@@ -30,7 +30,7 @@ type SteamUserObject = {
   identifier: string;
 };
 
-type ParsedUserObject = {
+export type ParsedUserObject = {
   id: string;
   steamid: string;
   name: string;
