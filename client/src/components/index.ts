@@ -1,6 +1,11 @@
+export { default as CallToAction } from "./cta/CallToAction";
 export { default as CheckoutForm } from "./checkout-form/CheckoutForm";
 export { default as ContentLoader } from "./content-loader/ContentLoader";
 export { default as Header } from "./header/Header";
 export { default as Hero } from "./hero/Hero";
-export { default as CallToAction } from "./cta/CallToAction";
+export { default as PaymentSuccessful } from "./payment-successful/PaymentSuccessful";
+export { default as PlanCard } from "./plan-card/PlanCard";
+export { default as PlanCheckoutCard } from "./plan-checkout-card/PlanCheckoutCard";
 export { default as Subhero } from "./subhero/Subhero";
+export { default as VipBenefitListItem } from "./vip-benefit-list-item/VipBenefitListItem";
+export { default as VipBenefits } from "./vip-benefits/VipBenefits";

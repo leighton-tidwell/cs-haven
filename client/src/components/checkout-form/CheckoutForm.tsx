@@ -1,14 +1,14 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent } from "react";
 import {
   PaymentElement,
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
-import style from "./style.module.css";
 import { useGetPaymentStatus } from "../../hooks/useGetPaymentStatus";
 import { useGetWindowClientSecret } from "../../hooks/useGetWindowClientSecret";
 import { useConfirmPayment } from "../../hooks/useConfirmPayment";
-import { LogoDiscord } from "react-ionicons";
+import { PaymentSuccessful } from "../";
+import style from "./style.module.css";
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -26,40 +26,7 @@ const CheckoutForm = () => {
     submitPayment();
   };
 
-  const handleDiscordInvite = () => {
-    window.open("https://discord.gg/5geAyUYeVN", "_blank");
-  };
-
-  if (data?.paymentIntent) {
-    return (
-      <div className={style["payment-message"]}>
-        <div className={style["payment-message__title"]}>
-          Payment Successful!
-        </div>
-        <div className={style["payment-message__subtitle"]}>
-          <span>
-            Thank you for purchasing VIP with CS Haven. We hope you enjoy your
-            experience.
-          </span>
-          <span>
-            If your VIP does not automatically activate after the next map
-            change, or you have any other questions, please join our Discord.
-            Here you can speak with administrators, other players, and reccomend
-            suggestions to the server developers.
-          </span>
-        </div>
-        <div className={style["join-our-discord"]}>
-          <div
-            onClick={handleDiscordInvite}
-            className={style["discord-button"]}
-          >
-            Join Our Discord
-            <LogoDiscord color={"#ffffff"} />
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (data?.paymentIntent) return <PaymentSuccessful />;
 
   return (
     <>

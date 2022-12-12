@@ -1,32 +1,11 @@
 import { CheckmarkDone } from "react-ionicons";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useCheckAuth } from "../../hooks/useCheckAuth";
-import { ContentLoader } from "../../components";
+import { ContentLoader, VipBenefits } from "../../components";
 import logo from "../../assets/images/cs-haven-logo.svg";
 import style from "./style.module.css";
 
 import Login from "./login";
-
-const benefits = [
-  {
-    id: 1,
-    title: "No Wait Times",
-    description:
-      "When you become a VIP, you get to skip the spectator queue and join the game in the next round.",
-  },
-  {
-    id: 2,
-    title: "Special Commands",
-    description:
-      "To see a list of commands that VIPs have access to, take a look here.",
-  },
-  {
-    id: 3,
-    title: "And more",
-    description:
-      "We are constantly taking community feedback and adding/customizing plugins to the communities requests. VIPs will have access to any future features that are implemented.",
-  },
-];
 
 const Vip = () => {
   const { data, isLoading } = useCheckAuth();
@@ -51,30 +30,7 @@ const Vip = () => {
               created with recommendations from the community.
             </div>
           </div>
-          <div className={style["vip-benefits"]}>
-            <div className={style["vip-benefits__title"]}>
-              Joining VIP gets you:
-            </div>
-            {benefits.map((benefit) => (
-              <div key={benefit.id} className={style["vip-benefits__benefits"]}>
-                <div className={style["vip-benefits__benefit"]}>
-                  <div className={style["vip-benefits__benefit__icon"]}>
-                    <CheckmarkDone />
-                  </div>
-                  <div className={style["vip-benefits__benefit__information"]}>
-                    <div className={style["vip-benefits__benefit__title"]}>
-                      {benefit.title}
-                    </div>
-                    <div
-                      className={style["vip-benefits__benefit__description"]}
-                    >
-                      {benefit.description}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <VipBenefits />
         </>
       </div>
       <div

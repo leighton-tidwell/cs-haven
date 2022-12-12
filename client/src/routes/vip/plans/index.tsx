@@ -1,10 +1,22 @@
 import { useCheckAuth } from "../../../hooks/useCheckAuth";
 import { HelpCircle } from "react-ionicons";
 import style from "./style.module.css";
-import { ContentLoader } from "../../../components";
+import { ContentLoader, PlanCard } from "../../../components";
 import { Navigate, useNavigate } from "react-router-dom";
 
-export const packages = [
+export type Package = {
+  id: string;
+  title: string;
+  description: string;
+  subtext?: string;
+  price: number;
+  subscription: boolean;
+  tag?: string;
+  crossOutPrice?: number;
+  background?: string;
+};
+
+export const packages: Package[] = [
   {
     id: "one-month",
     title: "One Month",
@@ -46,7 +58,6 @@ export const packages = [
 
 const Plans = () => {
   const { data: user, isLoading } = useCheckAuth();
-  const navigate = useNavigate();
 
   if (isLoading) return <ContentLoader />;
 
@@ -61,44 +72,7 @@ const Plans = () => {
         <div className={style["choose-package__title"]}>Choose a package:</div>
         <div className={style["choose-package__packages"]}>
           {packages.map((packageItem) => (
-            <div
-              key={packageItem.id}
-              className={`${style["choose-package__package"]} ${
-                style[packageItem.background ?? "normal"]
-              }`}
-              onClick={() => navigate(`/vip/plans/${packageItem.id}`)}
-            >
-              {packageItem.tag && (
-                <div className={style["choose-package__package__tag"]}>
-                  {packageItem.tag}
-                </div>
-              )}
-              <div className={style["choose-package__package__title"]}>
-                {packageItem.title}
-              </div>
-              <div className={style["choose-package__package__description"]}>
-                {packageItem.description}
-              </div>
-              {packageItem.subtext && (
-                <div className={style["choose-package__package__subtext"]}>
-                  {packageItem.subtext}
-                </div>
-              )}
-              <div className={style["choose-package__package__price"]}>
-                {packageItem.crossOutPrice && (
-                  <div
-                    className={
-                      style["choose-package__package__cross-out-price"]
-                    }
-                  >
-                    ${packageItem.crossOutPrice}
-                  </div>
-                )}
-                <div className={style["choose-package__package__actual-price"]}>
-                  ${packageItem.price}
-                </div>
-              </div>
-            </div>
+            <PlanCard key={packageItem.id} packageItem={packageItem} />
           ))}
         </div>
       </div>

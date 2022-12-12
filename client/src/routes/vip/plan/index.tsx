@@ -10,7 +10,11 @@ import {
 import { Elements } from "@stripe/react-stripe-js";
 import { usePaymentIntent } from "../../../hooks/usePaymentIntent";
 import { useCheckAuth } from "../../../hooks/useCheckAuth";
-import { ContentLoader, CheckoutForm } from "../../../components";
+import {
+  ContentLoader,
+  CheckoutForm,
+  PlanCheckoutCard,
+} from "../../../components";
 import style from "./style.module.css";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
@@ -88,26 +92,7 @@ const Plan = () => {
     <div className={style["checkout"]}>
       <div className={style["chosen__plan__container"]}>
         <div className={style["checkout__title"]}>Checkout:</div>
-        <div
-          className={`${style["checkout__plan"]} ${
-            style[chosenPackage.background ?? "normal"]
-          }`}
-        >
-          {chosenPackage.tag && (
-            <div className={style["checkout__plan__tag"]}>Popular</div>
-          )}
-          <div className={style["checkout__plan__title"]}>
-            {chosenPackage.title}
-          </div>
-          <div className={style["checkout__plan__price"]}>
-            ${chosenPackage.price}
-          </div>
-          <div className={style["checkout__plan__edit"]}>
-            <Link to="/vip/plans">
-              <Create color="white" />
-            </Link>
-          </div>
-        </div>
+        <PlanCheckoutCard chosenPackage={chosenPackage} />
         <div className={style["checkout__description"]}>
           {chosenPackage.description}
         </div>

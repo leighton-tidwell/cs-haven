@@ -1,0 +1,30 @@
+.vip-benefits {
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+
+  margin-bottom: var(--page-padding-bottom);
+}
+
+@media (min-height: 600px) and (orientation: landscape) {
+  .vip-benefits {
+    gap: var(--default-gap);
+  }
+}
+
+.vip-benefits__title {
+  font-size: var(--font-size-cta);
+  font-weight: var(--font-weight-normal);
+}
+
+@media (min-height: 600px) and (orientation: landscape) {
+  .vip-benefits__title {
+    font-size: var(--font-size-span);
+  }
+}
+
+@media (min-height: 800px) and (orientation: landscape) {
+  .vip-benefits__title {
+    font-size: var(--font-size-cta);
+  }
+}

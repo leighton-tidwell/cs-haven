@@ -1,0 +1,52 @@
+.payment-message {
+  display: flex;
+  flex-direction: column;
+  gap: var(--default-gap);
+}
+
+.payment-message__title {
+  color: var(--green);
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+}
+
+.payment-message__subtitle {
+  padding: var(--default-gap);
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius-default);
+  color: var(--white);
+  font-size: var(--font-size-span);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--default-gap);
+}
+
+.discord-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--default-gap);
+  padding: var(--button-padding);
+  border-radius: var(--border-radius-default);
+  /* use the official discord color for the background */
+
+  background-color: var(--primary-color);
+  cursor: pointer;
+  width: fit-content;
+  border: none;
+  color: var(--white);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-span);
+}
+
+.discord-button span {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-height: 800px) and (orientation: landscape) {
+  .discord-button {
+    padding: 0.5em 1em;
+  }
+}
